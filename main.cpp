@@ -8,9 +8,6 @@
 using namespace std;
 
 
-// void conta_colunas (const string & arq) {
-
-
 
 
         int main(int argc, char *argv[]) {
@@ -50,30 +47,26 @@ using namespace std;
 
 
             //escolhe quais as colunas serao utilizadas
-            int coluna1, coluna2;
-            cout << " digite as colunas desejadas " << endl;
-            cin >> coluna1;
-            cin >> coluna2;
-            pos = 0;
-            cont_colunas = 0;
-            string string_coluna1, string_coluna2;
-            string aux;
-            int cont = 0;
-            while (getline(arq2, line)) {
 
+            while (getline(arq2, line)) {
+                int coluna1=1, coluna2=3;
+                int cont = 0;
+                pos = 0;
+                cont_colunas = 0;
+                string string_coluna1, string_coluna2;
                 while (true) {
                     int pos1 = line.find(virgula, pos);
                     if (pos1 == string::npos)break;
                     if (cont_colunas == coluna1 || cont_colunas == coluna2) {
 
                         if (cont == 0) {
-                            string_coluna1 = line.substr(pos1 + 1, pos);
+                            string_coluna1 = line.substr(pos1, pos);
                             cont++;
                         } else
-                            string_coluna2 = line.substr(pos1 + 1, pos);
+                            string_coluna2 = line.substr(pos1 , pos);
                     }
 
-                    pos = pos1 + pos+1;
+                    pos = pos1 + pos;
                     cont_colunas++;
                 }
                 cout << string_coluna1 << ", " << string_coluna2 << endl;
